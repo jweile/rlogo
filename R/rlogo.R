@@ -57,14 +57,16 @@ aaColors <- c(
 #' @param data a numerical matrix with rownames corresponding to the letters to be drawn.
 #' @param col a named vector of colors to be used for each letter.
 #' @param lttrs the letters corresponding to the rows in the matrix, defaults to the matrix's colnames.
+#' @param bgcol the background color used to fill cut-out parts of letters
+#' @param ... Other parameters to be passed to the \code{plot()} function.
 #' @export
 #'
-drawSimpleLogo <- function(data,col,lttrs=rownames(data)) {
-	plot(0,type="n",xlim=c(0,ncol(data)+1),ylim=c(0,max(colSums(data,na.rm=TRUE),na.rm=TRUE)))
+drawSimpleLogo <- function(data,col,lttrs=rownames(data),bgcol="white",...) {
+	plot(0,type="n",xlim=c(0,ncol(data)+1),ylim=c(0,max(colSums(data,na.rm=TRUE),na.rm=TRUE)),...)
 	for (i in 1:ncol(data)) {
 		top <- sum(data[,i])
 		for (j in 1:nrow(data)) {
-			drawLetter(lttrs[[j]],i-.5,top-data[j,i],i+.5,top,col=col[[lttrs[[j]]]])
+			drawLetter(lttrs[[j]],i-.5,top-data[j,i],i+.5,top,col=col[[lttrs[[j]]]],bgcol=bgcol)
 			top <- top-data[j,i]
 		}
 	}
