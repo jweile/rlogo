@@ -4,7 +4,7 @@
 \alias{drawSimpleLogo}
 \title{draw a simple weblogo}
 \usage{
-drawSimpleLogo(data, col, lttrs = rownames(data))
+drawSimpleLogo(data, col, lttrs = rownames(data), bgcol = "white", ...)
 }
 \arguments{
 \item{data}{a numerical matrix with rownames corresponding to the letters to be drawn.}
@@ -12,6 +12,10 @@ drawSimpleLogo(data, col, lttrs = rownames(data))
 \item{col}{a named vector of colors to be used for each letter.}
 
 \item{lttrs}{the letters corresponding to the rows in the matrix, defaults to the matrix's colnames.}
+
+\item{bgcol}{the background color used to fill cut-out parts of letters}
+
+\item{...}{Other parameters to be passed to the \code{plot()} function.}
 }
 \description{
 draws a simple web logo for a matrix of values.
