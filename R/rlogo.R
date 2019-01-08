@@ -13,6 +13,9 @@
 #' @export
 #' 
 drawLetter <- function(letter,x0,y0,x1,y1,col=par("fg"),bgcol="white") {
+	if (!(letter %in% names(alphapolys))) {
+		stop("Letter \"",letter,"\" is not supported!")
+	}
 	polycoords <- alphapolys[[letter]]
 	w <- x1-x0
 	h <- y1-y0
